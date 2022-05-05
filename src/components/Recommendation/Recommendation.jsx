@@ -1,13 +1,20 @@
-import styled from "styled-components";
-import { useEffect } from "react";
+import React, { useEffect } from 'react';
+import styled from 'styled-components';
 
-import ReactPlayer from "react-player";
-import { GoArrowUp, GoArrowDown } from "react-icons/go";
+import ReactPlayer from 'react-player';
+import { GoArrowUp, GoArrowDown } from 'react-icons/go';
 
-import useUpvoteRecommendation from "../../hooks/api/useUpvoteRecommendation";
-import useDownvoteRecommendation from "../../hooks/api/useDownvoteRecommendation";
+import useUpvoteRecommendation from '../../hooks/api/useUpvoteRecommendation';
+import useDownvoteRecommendation from '../../hooks/api/useDownvoteRecommendation';
 
-export default function Recommendation({ name, youtubeLink, score, id, onUpvote = () => 0, onDownvote = () => 0 }) {
+export default function Recommendation({
+  name,
+  youtubeLink,
+  score,
+  id,
+  onUpvote = () => 0,
+  onDownvote = () => 0,
+}) {
   const { upvoteRecommendation, errorUpvotingRecommendation } = useUpvoteRecommendation();
   const { downvoteRecommendation, errorDownvotingRecommendation } = useDownvoteRecommendation();
 
@@ -23,15 +30,14 @@ export default function Recommendation({ name, youtubeLink, score, id, onUpvote 
 
   useEffect(() => {
     if (errorUpvotingRecommendation) {
-      alert("Error upvoting recommendation!");
+      alert('Error upvoting recommendation!');
     }
   }, [errorUpvotingRecommendation]);
 
   useEffect(() => {
     if (errorDownvotingRecommendation) {
-      alert("Error downvoting recommendation!");
+      alert('Error downvoting recommendation!');
     }
-
   }, [errorDownvotingRecommendation]);
 
   return (
@@ -39,9 +45,9 @@ export default function Recommendation({ name, youtubeLink, score, id, onUpvote 
       <Row>{name}</Row>
       <ReactPlayer id="reactPlayer" url={youtubeLink} width="100%" height="100%" />
       <Row>
-        <GoArrowUp id="upvoteArrow" size="24px" onClick={handleUpvote} />
+        <GoArrowUp size="24px" onClick={handleUpvote} />
         {score}
-        <GoArrowDown id="downvoteArrow" size="24px" onClick={handleDownvote} />
+        <GoArrowDown size="24px" onClick={handleDownvote} />
       </Row>
     </Container>
   );

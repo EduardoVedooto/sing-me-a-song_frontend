@@ -20,6 +20,9 @@
         "cypress"
     ],
     "rules": {
-        "jest/expect-expect": "off"
+        "jest/expect-expect": "off",
+        "linebreak-style": "off",
+        "react/prop-types": "warn",
+        "no-alert": "warn"
     }
 }
