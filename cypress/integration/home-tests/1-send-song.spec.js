@@ -13,5 +13,11 @@ describe("/home - send a song", () => {
     cy.get('input[id="songLink"]').type(songA.youtubeLink);
     cy.get('button[id="sendSong"]').click();
 
+    /*
+    como poderia conferir aqui se adicionou a recomendação?
+    espera o elemento em si que renderiza?
+    intercepta a api chamando post recommendations e espera resolver?
+    */
+
   });
 });
