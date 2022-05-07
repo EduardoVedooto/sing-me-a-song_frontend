@@ -1,13 +1,15 @@
-import useRecommendation from "../../../hooks/api/useRecommendation";
+/* eslint-disable react/jsx-props-no-spreading */
+import React from 'react';
+import useRecommendation from '../../../hooks/api/useRecommendation';
 
-import Recommendation from "../../../components/Recommendation";
+import Recommendation from '../../../components/Recommendation';
 
 export default function Random() {
   const { recommendation, updateRecommendation } = useRecommendation();
 
   const handleUpdate = () => {
     updateRecommendation(recommendation.id);
-  }
+  };
 
   if (!recommendation) {
     return <div>Loading...</div>;

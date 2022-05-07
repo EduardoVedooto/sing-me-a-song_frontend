@@ -1,6 +1,8 @@
-import useTopRecommendations from "../../../hooks/api/useTopRecommendations";
+/* eslint-disable react/jsx-props-no-spreading */
+import React from 'react';
+import useTopRecommendations from '../../../hooks/api/useTopRecommendations';
 
-import Recommendation from "../../../components/Recommendation";
+import Recommendation from '../../../components/Recommendation';
 
 export default function Home() {
   const { recommendations, loadingRecommendations, listRecommendations } = useTopRecommendations();
@@ -12,7 +14,7 @@ export default function Home() {
   return (
     <>
       {
-        recommendations.map(recommendation => (
+        recommendations.map((recommendation) => (
           <Recommendation
             key={recommendation.id}
             {...recommendation}
@@ -28,5 +30,5 @@ export default function Home() {
         )
       }
     </>
-  )
+  );
 }

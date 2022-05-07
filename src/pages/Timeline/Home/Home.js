@@ -1,14 +1,19 @@
-import { useEffect } from "react";
+/* eslint-disable react/jsx-props-no-spreading */
+import React, { useEffect } from 'react';
 
-import useRecommendations from "../../../hooks/api/useRecommendations";
-import useCreateRecommendation from "../../../hooks/api/useCreateRecommendation";
+import useRecommendations from '../../../hooks/api/useRecommendations';
+import useCreateRecommendation from '../../../hooks/api/useCreateRecommendation';
 
-import CreateNewRecommendation from "../../../components/CreateNewRecommendation";
-import Recommendation from "../../../components/Recommendation";
+import CreateNewRecommendation from '../../../components/CreateNewRecommendation';
+import Recommendation from '../../../components/Recommendation';
 
 export default function Home() {
   const { recommendations, loadingRecommendations, listRecommendations } = useRecommendations();
-  const { loadingCreatingRecommendation, createRecommendation, creatingRecommendationError } = useCreateRecommendation();
+  const {
+    loadingCreatingRecommendation,
+    createRecommendation,
+    creatingRecommendationError,
+  } = useCreateRecommendation();
 
   const handleCreateRecommendation = async (recommendation) => {
     await createRecommendation({
@@ -21,7 +26,7 @@ export default function Home() {
 
   useEffect(() => {
     if (creatingRecommendationError) {
-      alert("Error creating recommendation!");
+      alert('Error creating recommendation!');
     }
   }, [creatingRecommendationError]);
 
@@ -31,9 +36,12 @@ export default function Home() {
 
   return (
     <>
-      <CreateNewRecommendation disabled={loadingCreatingRecommendation} onCreateNewRecommendation={handleCreateRecommendation} />
+      <CreateNewRecommendation
+        disabled={loadingCreatingRecommendation}
+        onCreateNewRecommendation={handleCreateRecommendation}
+      />
       {
-        recommendations.map(recommendation => (
+        recommendations.map((recommendation) => (
           <Recommendation
             key={recommendation.id}
             {...recommendation}
@@ -49,5 +57,5 @@ export default function Home() {
         )
       }
     </>
-  )
+  );
 }

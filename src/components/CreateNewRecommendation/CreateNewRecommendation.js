@@ -1,25 +1,28 @@
-import { useState } from "react";
-import styled from "styled-components";
+import React, { useState } from 'react';
+import styled from 'styled-components';
 
-import { IoReturnUpForwardOutline } from "react-icons/io5";
+import { IoReturnUpForwardOutline } from 'react-icons/io5';
 
-export default function CreateNewRecommendation({ onCreateNewRecommendation = () => 0, disabled = false }) {
-  const [name, setName] = useState("");
-  const [link, setLink] = useState("");
+export default function CreateNewRecommendation({
+  onCreateNewRecommendation = () => 0,
+  disabled = false,
+}) {
+  const [name, setName] = useState('');
+  const [link, setLink] = useState('');
 
   const handleCreateRecommendation = () => {
     onCreateNewRecommendation({
       name,
-      link
+      link,
     });
-    setLink("");
-    setName("");
-  }
-  
+    setLink('');
+    setName('');
+  };
+
   return (
     <Container>
-      <Input type="text" id="songName" placeholder="Name" value={name} onChange={e => setName(e.target.value)} disabled={disabled} />
-      <Input type="text" id="songLink" placeholder="https://youtu.be/..." value={link} onChange={e => setLink(e.target.value)} disabled={disabled} />
+      <Input type="text" id="songName" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} disabled={disabled} />
+      <Input type="text" id="songLink" placeholder="https://youtu.be/..." value={link} onChange={(e) => setLink(e.target.value)} disabled={disabled} />
       <Button id="sendSong" onClick={() => handleCreateRecommendation()} disabled={disabled}>
         <IoReturnUpForwardOutline size="24px" color="#fff" />
       </Button>

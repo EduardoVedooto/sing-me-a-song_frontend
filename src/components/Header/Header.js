@@ -1,5 +1,6 @@
-import styled from "styled-components";
-import { VscPlayCircle } from "react-icons/vsc";
+import React from 'react';
+import styled from 'styled-components';
+import { VscPlayCircle } from 'react-icons/vsc';
 
 export default function Header() {
   return (

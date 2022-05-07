@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 
 export default function useAsync(handler, immediate = true) {
   const [data, setData] = useState(null);
@@ -8,11 +8,11 @@ export default function useAsync(handler, immediate = true) {
   const act = (...args) => {
     setLoading(true);
     setError(null);
-    return handler(...args).then((data) => {
-      setData(data);
+    return handler(...args).then((handlerData) => {
+      setData(handlerData);
       setLoading(false);
-    }).catch((error) => {
-      setError(error);
+    }).catch((err) => {
+      setError(err);
       setLoading(false);
     });
   };
@@ -21,13 +21,12 @@ export default function useAsync(handler, immediate = true) {
     if (immediate) {
       act();
     }
-
   }, []);
 
   return {
     data,
     loading,
     error,
-    act
+    act,
   };
 }
