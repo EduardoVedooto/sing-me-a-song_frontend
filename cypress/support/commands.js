@@ -23,6 +23,5 @@
 const API_BASE_URL = 'http://localhost:5000/tests';
 
 Cypress.Commands.add('resetDatabase', () => {
-  cy.request('POST', `${API_BASE_URL}/reset-database`).as('resetDatabase');
-  cy.wait('@resetDatabase');
+  cy.request('POST', `${API_BASE_URL}/reset-database`);
 });
