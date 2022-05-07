@@ -23,6 +23,15 @@
         "jest/expect-expect": "off",
         "linebreak-style": "off",
         "react/prop-types": "warn",
-        "no-alert": "warn"
+        "no-alert": "warn",
+        "react/jsx-filename-extension": [
+            1,
+            {
+                "extensions": [
+                    ".js",
+                    ".jsx"
+                ]
+            }
+        ]
     }
 }
