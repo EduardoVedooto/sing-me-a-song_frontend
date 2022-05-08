@@ -5,11 +5,13 @@ const songA = {
   youtubeLink: 'https://www.youtube.com/watch?v=1dmQmMUdMt8',
 };
 
-/*
 beforeEach(() => {
   cy.resetDatabase();
 });
-*/
+
+afterEach(() => {
+  cy.resetDatabase();
+});
 
 describe('/home - send a song', () => {
   it('should succesfully send a new song', () => {
@@ -26,5 +28,3 @@ describe('/home - send a song', () => {
     cy.get('article').contains(songA.name).should('be.visible');
   });
 });
-
-// falta zerar banco antes e depois
